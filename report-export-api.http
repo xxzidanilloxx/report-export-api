@@ -1,0 +1,31 @@
+# Save product
+POST http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+  "name": "Teste",
+  "brand": "Teste",
+  "description": "Teste",
+  "category": "SMARTPHONES",
+  "stockQuantity": 500,
+  "price": 1299.99
+}
+
+###
+# Get all products
+GET http://localhost:8080/api/products
+Content-Type: application/json
+
+###
+# Update product
+PUT http://localhost:8080/api/products/1
+Content-Type: application/json
+
+{
+  "name": "Teste",
+  "brand": "Teste",
+  "description": "Teste",
+  "category": "SMARTPHONES",
+  "stockQuantity": 499,
+  "price": 1249.99
+}
