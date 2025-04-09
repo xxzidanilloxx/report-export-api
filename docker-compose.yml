@@ -1,0 +1,17 @@
+version: "3"
+services:
+  db:
+    image: mysql:8
+    container_name: report-export-api
+    environment:
+      MYSQL_DATABASE: report-export-api
+      MYSQL_USER: root
+      MYSQL_PASSWORD: danillo
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
+    driver: local
