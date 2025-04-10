@@ -88,8 +88,8 @@ Atualiza os dados de um produto cadastrado a partir do id fornecido.
 }
 ```
 
-#### ![put-products](https://github.com/user-attachments/assets/981559ca-266d-4d56-92ba-e2cea011d8a2)
-Demonstração do envio da requisição no Postman:
+#### Demonstração do envio da requisição no Postman:
+![put-products](https://github.com/user-attachments/assets/981559ca-266d-4d56-92ba-e2cea011d8a2)
 
 ### `GET localhost:8080/api/reports`
 Extrai um arquivo Excel (.xlsx) com os dados dos produtos.
