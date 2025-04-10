@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -83,6 +84,8 @@ public class ReportService {
         String[] headers = {"Name", "Brand", "Description", "Category",
                 "Stock", "Price (US$)", "Active", "Created", "Updated"};
 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+
         try (Workbook workbook = new XSSFWorkbook();
              ByteArrayOutputStream out = new ByteArrayOutputStream()) {
 
@@ -107,8 +110,12 @@ public class ReportService {
                 createCellStyle(dataRow, 4, String.valueOf(product.stockQuantity()), dataStyle);
                 createCellStyle(dataRow, 5, String.valueOf(product.price().doubleValue()), dataStyle);
                 createCellStyle(dataRow, 6, String.valueOf(product.isActive()), dataStyle);
-                createCellStyle(dataRow, 7, product.createdAt().toString(), dataStyle);
-                createCellStyle(dataRow, 8, product.updatedAt().toString(), dataStyle);
+
+                String formattedCreatedAt = product.createdAt() != null ? product.createdAt().format(formatter) : "";
+                String formattedUpdatedAt = product.updatedAt() != null ? product.updatedAt().format(formatter) : "";
+
+                createCellStyle(dataRow, 7, formattedCreatedAt, dataStyle);
+                createCellStyle(dataRow, 8, formattedUpdatedAt, dataStyle);
             }
 
             for (int i = 0; i < headers.length; i++) {
