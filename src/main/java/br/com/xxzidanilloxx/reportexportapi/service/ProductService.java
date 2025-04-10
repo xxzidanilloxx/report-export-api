@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -41,6 +42,7 @@ public class ProductService {
         product.setCategory(data.category());
         product.setStockQuantity(data.stockQuantity());
         product.setPrice(data.price());
+        product.setUpdatedAt(LocalDateTime.now());
         Product result = productRepository.save(product);
         return productMapper.toDto(result);
     }
